@@ -9,6 +9,7 @@ def ranking(ano):
         return jsonify({"erro": "Ano inválido"}), 400
 
     conn = get_db_connection()
+
     rows = conn.execute("""
         SELECT *
         FROM instituicoes
@@ -16,15 +17,16 @@ def ranking(ano):
         ORDER BY qt_mat_total DESC
         LIMIT 10
     """, (ano,)).fetchall()
+
     conn.close()
 
     resultado = []
-    ranking = 1
+    posicao = 1
 
     for row in rows:
         item = dict(row)
-        item["nu_ranking"] = ranking
+        item["nu_ranking"] = posicao
         resultado.append(item)
-        ranking += 1
+        posicao += 1
 
     return jsonify(resultado)

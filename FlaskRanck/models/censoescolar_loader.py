@@ -20,7 +20,6 @@ def carregar_csv(caminho, ano):
     for col in campos:
         if col not in df:
             df[col] = 0
-
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(int)
 
     df["qt_mat_total"] = (
@@ -35,10 +34,9 @@ def carregar_csv(caminho, ano):
         "co_entidade", "no_entidade", "no_uf", "sg_uf", "co_uf", "no_municipio",
         "co_municipio", "no_mesorregiao", "co_mesorregiao", "no_microrregiao",
         "co_microrregiao", "nu_ano_censo", "no_regiao", "co_regiao",
-        "qt_mat_bas", "qt_mat_prof", "qt_mat_eja", "qt_mat_esp",
-        "qt_mat_fund", "qt_mat_inf", "qt_mat_med",
-        "qt_mat_zr_na", "qt_mat_zr_rur", "qt_mat_zr_urb",
-        "qt_mat_total"
+        "qt_mat_bas", "qt_mat_prof", "qt_mat_eja", "qt_mat_esp", "qt_mat_fund",
+        "qt_mat_inf", "qt_mat_med", "qt_mat_zr_na", "qt_mat_zr_rur",
+        "qt_mat_zr_urb", "qt_mat_total"
     ]]
 
     conn = sqlite3.connect(DB_NAME)
